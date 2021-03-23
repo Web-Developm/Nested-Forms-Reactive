@@ -2,17 +2,17 @@
     <div class="card ">
         <div class="card-header bg-dark">
             <h1 class="display-3 text-center text-white ">Employee Registration</h1>
+            <p class="text-center text-white">{{today | date :'full'}}</p>
         </div>
 
         <div class="card-body">
             <div class="section">
                 <form [formGroup]="empForm">
-
                     <div formArrayName="employees">
-                        <div *ngFor="let employee of employees().controls; let i=index">
-                            <div [formGroupName]="i"
+                        <div *ngFor="let employee of employees().controls; let j=index">
+                            <div [formGroupName]="j"
                                 style="border: 1px dashed  black; padding:10px; width:600px; margin:5px">
-                                Employee {{i}}
+                                Employee {{j}}
                                 <br>
                                 <br>
 
@@ -168,15 +168,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="row">
-                                        <div class="col-sm-4">
-
-                                        </div>
-
-                                        <div class="col-sm-6 d-grid">
-                                            <button type="button" class="btn btn-success">Submit</button>
-                                        </div>
-                                    </div>
+                                   
 
 
                                 </div>
@@ -185,7 +177,7 @@
 
 
                             </div>
-                            <button type="button" (click)="removeEmployee(i)" class="btn btn-dark">Remove</button>
+                            <button type="button" (click)="removeEmployee(j)" class="btn btn-dark">Remove</button>
                             <br>
                             <br>
 
@@ -193,10 +185,24 @@
                         <button type="button" class="btn btn-dark" (click)="addEmployee()">Add Employee</button>
                     </div>
 
-                </form>
+                    
 
+                </form>
                 {{empForm.value | json}}
+                <div class="row">
+                    <div class="col-sm-4 d-grid">
+                        <button type="button" class="btn btn-success">Submit</button>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
+</div>
+
+<div class="container">
+    <ul>
+        <li *ngFor="let result1 of result">{{result1}}</li>
+    </ul>
+    <p>{{item}}</p>
 </div>

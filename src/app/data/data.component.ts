@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl,FormBuilder,FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit,Input } from '@angular/core';
+import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FormArray } from '@angular/forms';
+import { FormService } from '../form.service';
 
 
 
@@ -12,58 +13,65 @@ import { FormArray } from '@angular/forms';
 })
 export class DataComponent implements OnInit {
 
-    empForm!:FormGroup;
+  
 
-    test!:any;
+  @Input()item!:string;
 
-  constructor(private fb: FormBuilder) { 
-    this.empForm=this.fb.group({
-      employees: this.fb.array([]),
-    })
+  today:number=Date.now();
+
+  test!: any;
+
+  constructor(private fb: FormBuilder, private formService: FormService) {  
   }
 
-  employees():FormArray{
+  empForm = this.fb.group({
+    employees: this.fb.array([]),
+  })
+
+  employees(): FormArray {
     return this.empForm.get('employees') as FormArray;
   }
 
-  newEmployee(): FormGroup{
+  newEmployee(): FormGroup {
     return this.fb.group({
-      fname:'',
-      lname:'',
-      user:'',
-      email:'',
-      password:'',
-      cpassword:'',
-      date:'',
-      gender:'',
-      phone:'',
-      address:this.fb.group({
-        street:'',
-        city:'',
-        state:'',
-        zip:''
+      fname: '',
+      lname: '',
+      user: '',
+      email: '',
+      password: '',
+      cpassword: '',
+      date: '',
+      gender: '',
+      phone: '',
+      address: this.fb.group({
+        street: '',
+        city: '',
+        state: '',
+        zip: ''
       })
     });
   }
 
-  addEmployee(){
+  addEmployee() {
     this.employees().push(this.newEmployee());
   }
 
-  removeEmployee(empIndex:number)
-  {
+  removeEmployee(empIndex: number) {
     this.employees().removeAt(empIndex);
   }
 
-  ngOnInit(): void {
+  result = [];
+
+  
+
+  ngOnInit():any {
+    this.result = this.formService.getDisplay();
+    this.formService.getMessage();
+
     
   }
 
-  onSubmit()
-  {
-    console.log(this.empForm.value);
-  }
 
-  
+
 
 }

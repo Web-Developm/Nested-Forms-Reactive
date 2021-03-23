@@ -1,16 +1,39 @@
 import { Injectable } from '@angular/core';
-import {Data} from './data/data.component';
+import { FormControl, FormArray, FormBuilder, FormGroup } from '@angular/forms';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class FormService {
-   
-  constructor() { }
 
-  display=():void =>{
-    console.log("hello");
+  empForm!: FormGroup;
+
+  baseurl:string="https://jsonplaceholder.typicode.com/posts";
+
+
+  constructor() {
+  }
+
+  list = ["abc", "def"];
+
+  getDisplay(): any {
+    return this.list;
+  }
+
+  getMessage()
+  {
+    console.log("Welcome Type Script");
   }
 
   
+
+
+
+
+
+
+
+
+
 }
