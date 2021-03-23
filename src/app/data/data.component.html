@@ -1,0 +1,202 @@
+<div class="container">
+    <div class="card ">
+        <div class="card-header bg-dark">
+            <h1 class="display-3 text-center text-white ">Employee Registration</h1>
+        </div>
+
+        <div class="card-body">
+            <div class="section">
+                <form [formGroup]="empForm">
+
+                    <div formArrayName="employees">
+                        <div *ngFor="let employee of employees().controls; let i=index">
+                            <div [formGroupName]="i"
+                                style="border: 1px dashed  black; padding:10px; width:600px; margin:5px">
+                                Employee {{i}}
+                                <br>
+                                <br>
+
+
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <label>First Name</label>
+
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" name="fname" id="fname"
+                                            formControlName="fname">
+                                    </div>
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        Last Name
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" name="lname" id="lname"
+                                            formControlName="lname">
+                                    </div>
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        User Name
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" name="user" id="user"
+                                            formControlName="user">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        Email
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <input type="email" class="form-control" name="email" id="email"
+                                            formControlName="email">
+                                    </div>
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        Password
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <input type="password" class="form-control" name="password" id="password"
+                                            formControlName="password" autocomplete="on">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        Confirm Password
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <input type="password" class="form-control" name="cpassword" id="cpassword"
+                                            formControlName="cpassword" autocomplete="on">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        Date of Birth
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <input type="date" class="form-control" name="date" id="date"
+                                            formControlName="date">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        Gender
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <select class="form-select" name="gender" formControlName="gender">
+                                            <option value="" selected>Select a option</option>
+                                            <option value="1">Male</option>
+                                            <option value="2">Female</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        Phone Number
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <input type="tel" class="form-control" name="phone" id="phone"
+                                            formControlName="phone">
+                                    </div>
+                                </div>
+
+                                <div formGroupName="address">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            street
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" name="street" id="street"
+                                                formControlName="street">
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            City
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" name="city" id="city"
+                                                formControlName="city">
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            State
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" name="state" id="state"
+                                                formControlName="state">
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            Zip
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" name="zip" id="zip"
+                                                formControlName="zip">
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-4">
+
+                                        </div>
+
+                                        <div class="col-sm-6 d-grid">
+                                            <button type="button" class="btn btn-success">Submit</button>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+
+
+
+                            </div>
+                            <button type="button" (click)="removeEmployee(i)" class="btn btn-dark">Remove</button>
+                            <br>
+                            <br>
+
+                        </div>
+                        <button type="button" class="btn btn-dark" (click)="addEmployee()">Add Employee</button>
+                    </div>
+
+                </form>
+
+                {{empForm.value | json}}
+            </div>
+        </div>
+    </div>
+</div>
