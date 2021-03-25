@@ -1,8 +1,6 @@
 import { Component, OnInit,Input } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FormArray } from '@angular/forms';
-import { FormService } from '../form.service';
-
 
 
 
@@ -14,19 +12,25 @@ import { FormService } from '../form.service';
 export class DataComponent implements OnInit {
 
   
-
-  @Input()item!:string;
-
   today:number=Date.now();
 
-  test!: any;
+  
 
-  constructor(private fb: FormBuilder, private formService: FormService) {  
+  @Input() empForm!:FormGroup;
+  
+  constructor(private fb:FormBuilder)
+  {
+   
+  }
+  ngOnInit():any {
+    this.empForm= this.fb.group({
+      employees: this.fb.array([]),
+    })
   }
 
-  empForm = this.fb.group({
-    employees: this.fb.array([]),
-  })
+  ngOnChanges():any{
+
+  }
 
   employees(): FormArray {
     return this.empForm.get('employees') as FormArray;
@@ -34,43 +38,48 @@ export class DataComponent implements OnInit {
 
   newEmployee(): FormGroup {
     return this.fb.group({
-      fname: '',
-      lname: '',
-      user: '',
-      email: '',
-      password: '',
-      cpassword: '',
-      date: '',
-      gender: '',
-      phone: '',
+      fname:[''],
+      lname:[''],
+      user: [''],
+      email: [''],
+      password: [''],
+      cpassword: [''],
+      date: [''],
+      gender: [''],
+      phone: [''],
       address: this.fb.group({
-        street: '',
-        city: '',
-        state: '',
-        zip: ''
-      })
+        street: [''],
+        city: [''],
+        state: [''],
+        zip: ['']
+      }),
     });
   }
 
-  addEmployee() {
-    this.employees().push(this.newEmployee());
-  }
-
-  removeEmployee(empIndex: number) {
-    this.employees().removeAt(empIndex);
-  }
-
-  result = [];
 
   
-
-  ngOnInit():any {
-    this.result = this.formService.getDisplay();
-    this.formService.getMessage();
-
+  
+  addEmployee() {
+    this.employees().push(this.newEmployee());
     
   }
 
+  
+
+  removeEmployee(empIndex:number) {
+    this.employees().removeAt(empIndex);
+  }
+
+  visible=false;
+
+  display=():void =>{  
+    alert("Successfully Submitted");
+    console.log(this.employees().value);
+  }
+
+
+  result = [];
+  
 
 
 

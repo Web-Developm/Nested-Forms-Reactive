@@ -26,6 +26,10 @@ export class FormService {
     console.log("Welcome Type Script");
   }
 
+  hello=():void =>{
+    console.log("Welcome");
+  }
+
   
 
 

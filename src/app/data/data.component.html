@@ -1,8 +1,8 @@
-<div class="container">
+<div class="jumbotron">
     <div class="card ">
-        <div class="card-header bg-dark">
-            <h1 class="display-3 text-center text-white ">Employee Registration</h1>
-            <p class="text-center text-white">{{today | date :'full'}}</p>
+        <div class="card-header bg-dark text-white">
+            <h1 class="text-center display-2">Application</h1>
+            <h5 class="text-center">{{today | date :"full"}}</h5>
         </div>
 
         <div class="card-body">
@@ -11,7 +11,7 @@
                     <div formArrayName="employees">
                         <div *ngFor="let employee of employees().controls; let j=index">
                             <div [formGroupName]="j"
-                                style="border: 1px dashed  black; padding:10px; width:600px; margin:5px">
+                                style="margin:5px;padding-top:5px">
                                 Employee {{j}}
                                 <br>
                                 <br>
@@ -25,7 +25,7 @@
 
                                     <div class="col-sm-6">
                                         <input type="text" class="form-control" name="fname" id="fname"
-                                            formControlName="fname">
+                                            formControlName="fname" required>
                                     </div>
                                 </div>
 
@@ -37,7 +37,7 @@
 
                                     <div class="col-sm-6">
                                         <input type="text" class="form-control" name="lname" id="lname"
-                                            formControlName="lname">
+                                            formControlName="lname" required>
                                     </div>
                                 </div>
 
@@ -59,7 +59,7 @@
                                     </div>
 
                                     <div class="col-sm-6">
-                                        <input type="email" class="form-control" name="email" id="email"
+                                        <input type="email" class="form-control" name="email1" id="email1"
                                             formControlName="email">
                                     </div>
                                 </div>
@@ -106,8 +106,8 @@
                                     <div class="col-sm-6">
                                         <select class="form-select" name="gender" formControlName="gender">
                                             <option value="" selected>Select a option</option>
-                                            <option value="1">Male</option>
-                                            <option value="2">Female</option>
+                                            <option>Male</option>
+                                            <option>Female</option>
                                         </select>
                                     </div>
                                 </div>
@@ -168,9 +168,7 @@
                                         </div>
                                     </div>
 
-                                   
-
-
+                                
                                 </div>
 
 
@@ -181,28 +179,29 @@
                             <br>
                             <br>
 
+                            
+
                         </div>
                         <button type="button" class="btn btn-dark" (click)="addEmployee()">Add Employee</button>
+                        
                     </div>
+
+                    <br>
+                    <br>
 
                     
 
                 </form>
-                {{empForm.value | json}}
                 <div class="row">
                     <div class="col-sm-4 d-grid">
-                        <button type="button" class="btn btn-success">Submit</button>
+                        <button (click)="display()" type="button" [disabled]="visible" class="btn btn-success">Submit</button>
                     </div>
                 </div>
 
+                <!--{{empForm.value | json}} -->
+               
             </div>
         </div>
     </div>
 </div>
 
-<div class="container">
-    <ul>
-        <li *ngFor="let result1 of result">{{result1}}</li>
-    </ul>
-    <p>{{item}}</p>
-</div>
