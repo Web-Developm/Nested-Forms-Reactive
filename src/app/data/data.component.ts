@@ -24,7 +24,7 @@ export class DataComponent implements OnInit {
   }
   ngOnInit():any {
     this.empForm= this.fb.group({
-      employees: this.fb.array([]),
+      employees: this.fb.array([this.newEmployee()]),
     })
   }
 
@@ -74,7 +74,7 @@ export class DataComponent implements OnInit {
 
   display=():void =>{  
     alert("Successfully Submitted");
-    console.log(this.employees().value);
+    console.log(this.empForm.value);
   }
 
 

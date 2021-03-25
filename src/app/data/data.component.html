@@ -15,6 +15,18 @@
                                 Employee {{j}}
                                 <br>
                                 <br>
+                                <div class="row">
+                                    <div class="col-8">
+
+                                    </div>
+
+                                    <div class="col-4">
+                                        <button type="button" class="btn-sm btn-outline-dark" (click)="addEmployee()">Add</button>
+                                        
+                                <button type="button" (click)="removeEmployee(j)" class="btn-sm btn-outline-dark">Remove</button>
+                                    </div>
+                                </div>
+                                
 
 
                                 <div class="row">
@@ -175,14 +187,14 @@
 
 
                             </div>
-                            <button type="button" (click)="removeEmployee(j)" class="btn btn-dark">Remove</button>
+                            
                             <br>
                             <br>
 
                             
 
                         </div>
-                        <button type="button" class="btn btn-dark" (click)="addEmployee()">Add Employee</button>
+                        
                         
                     </div>
 
@@ -193,8 +205,8 @@
 
                 </form>
                 <div class="row">
-                    <div class="col-sm-4 d-grid">
-                        <button (click)="display()" type="button" [disabled]="visible" class="btn btn-success">Submit</button>
+                    <div class="col-sm-12 d-grid">
+                        <button (click)="display()" type="button" [disabled]="visible" class="btn btn-outline-success">Submit</button>
                     </div>
                 </div>
 
