@@ -12,23 +12,10 @@ import { FormGroup } from '@angular/forms';
 })
 export class AppComponent {
   title = 'reactive-task';
-
-  
-  
   form:any="empForm";
-
-  
- test!: any;
-
-
   constructor() {  
     
   
   }
   
-  
-  
-
-
-
 }

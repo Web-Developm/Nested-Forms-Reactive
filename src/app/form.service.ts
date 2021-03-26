@@ -11,7 +11,7 @@ import {Observable,of, Subject} from 'rxjs';
 })
 export class FormService {
 
-  
+
   myMethod$: Observable<any>;
   private myMethodSubject=new  Subject<any>();
 
@@ -27,38 +27,8 @@ export class FormService {
 
   }
 
-
-  
-  
-
- 
-  
-
-  
-
-  
-
- 
-  
-
   ngOnInit():void{
     
   }
-  
-
-
-  
-
-
-  
-  
-  
-
-  
-
-  
-
- 
-  
-  
+    
 }
