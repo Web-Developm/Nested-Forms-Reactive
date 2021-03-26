@@ -71,33 +71,8 @@ export class DataComponent implements OnInit {
     this.empForm= this.fb.group({
       employees: this.fb.array([this.newEmployee()]),
     })
-
-    
-  
   }
-
- 
-
-  
-
-  
-  
-
- 
-
-  
-
-
-  ngOnChanges():any{
-   
-
-  }
-
-
-
-
-  
-
-
-
 }
+
+
+
