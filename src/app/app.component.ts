@@ -4,6 +4,7 @@ import { FormGroup } from '@angular/forms';
 
 
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -12,7 +13,9 @@ import { FormGroup } from '@angular/forms';
 export class AppComponent {
   title = 'reactive-task';
 
- form:any="empForm";
+  
+  
+  form:any="empForm";
 
   
  test!: any;

@@ -1,6 +1,10 @@
+
 import { Component, OnInit,Input } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FormArray } from '@angular/forms';
+import {FormService} from '../form.service';
+
+
 
 
 
@@ -10,35 +14,27 @@ import { FormArray } from '@angular/forms';
   styleUrls: ['./data.component.css']
 })
 export class DataComponent implements OnInit {
+  @Input() empForm!:FormGroup;
+
+  data!:FormGroup;
 
   
   today:number=Date.now();
 
-  
-
-  @Input() empForm!:FormGroup;
-  
-  constructor(private fb:FormBuilder)
+  constructor(private fb:FormBuilder,private fs:FormService)
   {
-   
-  }
-  ngOnInit():any {
-    this.empForm= this.fb.group({
-      employees: this.fb.array([this.newEmployee()]),
-    })
+    
+    
   }
 
-  ngOnChanges():any{
-
-  }
-
-  employees(): FormArray {
-    return this.empForm.get('employees') as FormArray;
+  
+  get employees(){
+    return <FormArray>this.empForm.get('employees');
   }
 
   newEmployee(): FormGroup {
     return this.fb.group({
-      fname:[''],
+      fname:['',Validators.required],
       lname:[''],
       user: [''],
       email: [''],
@@ -57,28 +53,49 @@ export class DataComponent implements OnInit {
   }
 
 
-  
-  
+ 
   addEmployee() {
-    this.employees().push(this.newEmployee());
-    
+    this.employees.push(this.newEmployee());
   }
-
-  
 
   removeEmployee(empIndex:number) {
-    this.employees().removeAt(empIndex);
+    this.employees.removeAt(empIndex);
   }
 
-  visible=false;
+  submit()
+  {
+    this.fs.myMethod(this.empForm);
+  }
 
-  display=():void =>{  
-    alert("Successfully Submitted");
-    console.log(this.empForm.value);
+  ngOnInit():any {
+    this.empForm= this.fb.group({
+      employees: this.fb.array([this.newEmployee()]),
+    })
+
+    
+  
+  }
+
+ 
+
+  
+
+  
+  
+
+ 
+
+  
+
+
+  ngOnChanges():any{
+   
+
   }
 
 
-  result = [];
+
+
   
 
 

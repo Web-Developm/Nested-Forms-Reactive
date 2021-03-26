@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {FormsModule} from '@angular/forms';
 import { AppRoutingModule,routingModule } from './app-routing.module';
@@ -9,11 +9,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DataComponent } from './data/data.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
     //routingModule,
-    DataComponent
+    DataComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -23,8 +25,8 @@ import { DataComponent } from './data/data.component';
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule {
 

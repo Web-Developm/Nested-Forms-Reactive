@@ -1,43 +1,62 @@
-import { Injectable } from '@angular/core';
-import { FormControl, FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { Injectable,OnInit,Input } from '@angular/core';
+import { FormControl, FormArray, FormBuilder, FormGroup,Validators } from '@angular/forms';
+import {Observable,of, Subject} from 'rxjs';
+
+
+
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class FormService {
-
-  empForm!: FormGroup;
-
-  baseurl:string="https://jsonplaceholder.typicode.com/posts";
+  myMethod$: Observable<any>;
+  private myMethodSubject=new  Subject<any>();
 
 
+  
   constructor() {
+  this.myMethod$ =this.myMethodSubject.asObservable(); 
   }
 
-  list = ["abc", "def"];
-
-  getDisplay(): any {
-    return this.list;
-  }
-
-  getMessage()
+  myMethod(data:any)
   {
-    console.log("Welcome Type Script");
+    console.log(data.value);
+
   }
 
-  hello=():void =>{
-    console.log("Welcome");
+
+  
+  
+
+ 
+  
+
+  
+
+  
+
+ 
+  
+
+  ngOnInit():void{
+    
   }
+  
+
 
   
 
 
+  
+  
+  
 
+  
 
+  
 
-
-
-
-
+ 
+  
+  
 }

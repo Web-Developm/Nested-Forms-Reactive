@@ -9,10 +9,10 @@
             <div class="section">
                 <form [formGroup]="empForm">
                     <div formArrayName="employees">
-                        <div *ngFor="let employee of employees().controls; let j=index">
-                            <div [formGroupName]="j"
-                                style="margin:5px;padding-top:5px">
+                        <div *ngFor="let employee1 of employees.controls; let j=index">
+                            <div [formGroupName]="j" style="margin:5px;padding-top:5px">
                                 Employee {{j}}
+
                                 <br>
                                 <br>
                                 <div class="row">
@@ -21,17 +21,18 @@
                                     </div>
 
                                     <div class="col-4">
-                                        <button type="button" class="btn-sm btn-outline-dark" (click)="addEmployee()">Add</button>
-                                        
-                                <button type="button" (click)="removeEmployee(j)" class="btn-sm btn-outline-dark">Remove</button>
+                                        <button type="button" (click)="addEmployee()"
+                                            class="btn-sm btn-outline-dark">Add</button>
+
+                                        <button type="button" (click)="removeEmployee(j)" class="btn-sm btn-outline-dark">Remove</button>
                                     </div>
                                 </div>
-                                
+
 
 
                                 <div class="row">
                                     <div class="col-sm-4">
-                                        <label>First Name</label>
+                                        First Name
 
                                     </div>
 
@@ -180,38 +181,38 @@
                                         </div>
                                     </div>
 
-                                
+
                                 </div>
 
 
 
 
                             </div>
-                            
+
                             <br>
                             <br>
 
-                            
+
 
                         </div>
-                        
-                        
+
+
                     </div>
 
                     <br>
                     <br>
 
-                    
+
 
                 </form>
                 <div class="row">
                     <div class="col-sm-12 d-grid">
-                        <button (click)="display()" type="button" [disabled]="visible" class="btn btn-outline-success">Submit</button>
+                        <button type="button" (click)="submit()" class="btn btn-outline-success">Submit</button>
                     </div>
                 </div>
 
-                <!--{{empForm.value | json}} -->
-               
+                <!--{{empForm.value | json}}-->
+
             </div>
         </div>
     </div>
