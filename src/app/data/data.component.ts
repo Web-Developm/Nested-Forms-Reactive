@@ -11,7 +11,8 @@ import {FormService} from '../form.service';
 @Component({
   selector: 'app-data',
   templateUrl: './data.component.html',
-  styleUrls: ['./data.component.css']
+  styleUrls: ['./data.component.css'],
+  providers:[FormService]
 })
 export class DataComponent implements OnInit {
   @Input() empForm!:FormGroup;
@@ -20,6 +21,9 @@ export class DataComponent implements OnInit {
 
   
   today:number=Date.now();
+
+  href="https://www.google.com/";
+  update="https://www.google.com/";
 
   constructor(private fb:FormBuilder,private fs:FormService)
   {

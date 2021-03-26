@@ -24,7 +24,6 @@ export class FormService {
   myMethod(data:any)
   {
     console.log(data.value);
-
   }
 
   ngOnInit():void{
