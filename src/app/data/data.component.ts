@@ -1,10 +1,5 @@
-
-import { Component, OnInit,Input } from '@angular/core';
-import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { FormArray } from '@angular/forms';
-import {FormService} from '../form.service';
-
-
+import { Component, OnInit,Input,Output } from '@angular/core';
+import { FormControl, FormBuilder, FormGroup, Validators,FormArray } from '@angular/forms';
 
 
 
@@ -12,69 +7,22 @@ import {FormService} from '../form.service';
   selector: 'app-data',
   templateUrl: './data.component.html',
   styleUrls: ['./data.component.css'],
-  providers:[FormService]
+  
 })
 export class DataComponent implements OnInit {
+  
   @Input() empForm!:FormGroup;
 
-  data!:FormGroup;
-
   
-  today:number=Date.now();
-
-  href="https://www.google.com/";
-  update="https://www.google.com/";
-
-  constructor(private fb:FormBuilder,private fs:FormService)
+  
+  constructor()
   {
-    
     
   }
 
   
-  get employees(){
-    return <FormArray>this.empForm.get('employees');
-  }
-
-  newEmployee(): FormGroup {
-    return this.fb.group({
-      fname:['',Validators.required],
-      lname:[''],
-      user: [''],
-      email: [''],
-      password: [''],
-      cpassword: [''],
-      date: [''],
-      gender: [''],
-      phone: [''],
-      address: this.fb.group({
-        street: [''],
-        city: [''],
-        state: [''],
-        zip: ['']
-      }),
-    });
-  }
-
-
- 
-  addEmployee() {
-    this.employees.push(this.newEmployee());
-  }
-
-  removeEmployee(empIndex:number) {
-    this.employees.removeAt(empIndex);
-  }
-
-  submit()
-  {
-    this.fs.myMethod(this.empForm);
-  }
-
   ngOnInit():any {
-    this.empForm= this.fb.group({
-      employees: this.fb.array([this.newEmployee()]),
-    })
+    console.log(this.empForm.value);
   }
 }
 
