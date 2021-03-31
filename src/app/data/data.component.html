@@ -1,5 +1,31 @@
-<div class="d-grid">
-    <button type="button" class="btn btn-success" (click)="display()">Display</button>
+<div class="jumbotron">
+    <form>
+        <div class="row">
+
+            <div class="col-sm-4">
+                <label>Blood Group</label>
+            </div>
+
+            <div class="col-sm-6 form-group">
+                <select name="blood" class="form-select">
+                    <option selected>Select a option</option>
+                    <option>O+</option>
+                    <option>O-</option>
+                    <option>A+</option>
+                    <option>A-</option>
+                    <option>B+</option>
+                    <option>B-</option>
+                    <option>AB+</option>
+                    <option>AB-</option>
+                </select>
+            </div>
+
+        </div>
+
+    </form>
 </div>
 
 
+<div class="d-grid">
+    <button type="button" class="btn btn-outline-success" (click)="display()">Display</button>
+</div>

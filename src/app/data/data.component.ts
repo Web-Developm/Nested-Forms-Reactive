@@ -14,21 +14,29 @@ export class DataComponent implements OnInit,OnChanges {
   
   @Input() empForm!:FormGroup;
 
-  @Output() empForm1=new EventEmitter<string>();
+  @Output() dataForm = new EventEmitter<FormGroup>();
 
-  @Output() dataForm=new EventEmitter<FormGroup>();
-
-  //dataForm!:FormGroup;
+  data!:FormGroup;
   
-  additem(value:string)
+
+  constructor(private fb:FormBuilder)
   {
-    this.empForm1.emit(value);
+    /*this.dataForm=this.fb.group({
+      blood :new FormControl('')
+    }) */
   }
 
-  constructor()
+  
+
+
+
+  add(value:FormGroup)
   {
+    this.dataForm.emit(value);
     
   }
+
+  
 
   display()
   {
