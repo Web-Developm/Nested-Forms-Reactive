@@ -26,8 +26,12 @@ export class FormService {
     console.log(data.value);
   }
 
+
+
   ngOnInit():void{
     
   }
     
 }
+
+

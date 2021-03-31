@@ -1,11 +1,14 @@
-<div class="jumbotron">
+<div class="container">
     <div class="card ">
         <div class="card-header bg-dark text-white">
             <h1 class="text-center display-2">Application</h1>
             <h5 class="text-center">{{today | date :"full"}}</h5>
         </div>
 
-
+        <div class="text-center">
+            {{empForm.value | json}}
+            <app-data [empForm]="empForm"></app-data>
+        </div>
 
         <div class="card-body">
             <div class="section">
@@ -58,9 +61,9 @@
                                         <input type="text" class="form-control" name="fname" id="fname"
                                             formControlName="fname" required>
 
-                                        <!--<div class="alert alert-success" *ngIf="employee1.get('fname')">
-                                                required
-                                            </div>-->
+                                        <!--<div class="alert alert-success">
+                                            required
+                                        </div>-->
 
                                     </div>
                                 </div>
@@ -83,11 +86,12 @@
                                     </div>
 
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control" name="user" id="user" formControlName="user" required>
+                                        <input type="text" class="form-control" name="user" id="user"
+                                            formControlName="user" required>
                                     </div>
                                 </div>
-                                
-                                <app-data [empForm]="empForm"></app-data>
+
+
 
                                 <div class="row">
                                     <div class="col-sm-4">
@@ -120,6 +124,9 @@
                                         <input type="password" class="form-control" name="cpassword" id="cpassword"
                                             formControlName="cpassword" autocomplete="on">
                                     </div>
+
+                                    <!--<div [ngStyle]="{'color':'red'}" *ngIf="empForm.get('password') == empForm.get('cpassword')">Password Not Match</div>-->
+                                    
                                     </ div>
 
 
@@ -228,14 +235,15 @@
 
 
                 </form>
+
                 <div class="row">
                     <div class="col-sm-12 d-grid">
-                        <button type="button" [disabled]="!empForm.valid" (click)="submit()"
+                        <button type="button" (click)="submit()" [disabled]="!empForm.valid" 
                             class="btn btn-outline-success">Submit</button>
                     </div>
                 </div>
 
-                {{empForm.value | json}}
+
 
             </div>
         </div>

@@ -19,10 +19,6 @@ export class AppComponent {
 
   today:number=Date.now();
 
-  loading=true;
-
-  
-  
   constructor(private fb:FormBuilder, private fs:FormService) {  
     
   }
@@ -32,21 +28,22 @@ export class AppComponent {
   }
 
   newEmployee(): FormGroup {
+
     return this.fb.group({
-      fname:['',Validators.required],
-      lname:['',Validators.required],
-      user:['',Validators.required],
-      email: ['',Validators.required],
-      password: ['',Validators.required],
-      cpassword: ['',Validators.required],
-      date: ['',Validators.required],
-      gender: ['',Validators.required],
-      phone: ['',Validators.required],
+      fname:[null,Validators.required],
+      lname:[null,Validators.required],
+      user:[null,Validators.required],
+      email: [null,Validators.required],
+      password: [null,Validators.required],
+      cpassword: [null,Validators.required],
+      date: [null,Validators.required],
+      gender: [null,Validators.required],
+      phone: [null,Validators.required],
       address: this.fb.group({
-        street: ['',Validators.required],
-        city: ['',Validators.required],
-        state: ['',Validators.required],
-        zip: ['',Validators.required]
+        street: [null,Validators.required],
+        city: [null,Validators.required],
+        state: [null,Validators.required],
+        zip: [null,Validators.required]
       }),
       
     });
@@ -68,6 +65,7 @@ export class AppComponent {
     this.employees.reset();
   }
 
+ 
   submit()
   {
     this.fs.myMethod(this.empForm);
@@ -80,13 +78,8 @@ export class AppComponent {
       employees: this.fb.array([this.newEmployee()]),
     })
 
-    this.loading=false;
   }
 
-  ngAfterViewInit()
-  {
-
-    this.loading=false;
-  }
+ 
   
 }
