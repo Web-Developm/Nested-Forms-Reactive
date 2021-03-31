@@ -5,10 +5,15 @@
             <h5 class="text-center">{{today | date :"full"}}</h5>
         </div>
 
+        <br>
+        <br>
+
         <div class="text-center">
             {{empForm.value | json}}
-            <app-data [empForm]="empForm"></app-data>
         </div>
+
+        <br>
+        <br>
 
         <div class="card-body">
             <div class="section">
@@ -53,8 +58,7 @@
 
                                 <div class="row">
                                     <div class="col-sm-4">
-                                        First Name
-
+                                        <label>First Name</label>
                                     </div>
 
                                     <div class="col-sm-6">
@@ -76,7 +80,7 @@
 
                                     <div class="col-sm-6">
                                         <input type="text" class="form-control" name="lname" id="lname"
-                                            formControlName="lname" required>
+                                            formControlName="lname" required value="Ideapad">
                                     </div>
                                 </div>
 
@@ -91,6 +95,11 @@
                                     </div>
                                 </div>
 
+                                <!--<app-data (empForm1)="add($event)"></app-data>
+                                <ul>
+                                    <li *ngFor="let item of items">{{item}}</li>
+                                </ul>-->
+
 
 
                                 <div class="row">
@@ -100,7 +109,7 @@
 
                                     <div class="col-sm-6">
                                         <input type="email" class="form-control" name="email1" id="email1"
-                                            formControlName="email">
+                                            formControlName="email" value="exampe@gmail.com">
                                     </div>
                                 </div>
 
@@ -111,7 +120,7 @@
 
                                     <div class="col-sm-6">
                                         <input type="password" class="form-control" name="password" id="password"
-                                            formControlName="password" autocomplete="on">
+                                            formControlName="password" autocomplete="on" >
                                     </div>
                                 </div>
 
@@ -122,11 +131,11 @@
 
                                     <div class="col-sm-6">
                                         <input type="password" class="form-control" name="cpassword" id="cpassword"
-                                            formControlName="cpassword" autocomplete="on">
+                                            formControlName="cpassword" autocomplete="on" value="1234">
                                     </div>
 
                                     <!--<div [ngStyle]="{'color':'red'}" *ngIf="empForm.get('password') == empForm.get('cpassword')">Password Not Match</div>-->
-                                    
+
                                     </ div>
 
 
@@ -137,7 +146,7 @@
 
                                         <div class="col-sm-6">
                                             <input type="date" class="form-control" name="date" id="date"
-                                                formControlName="date">
+                                                 formControlName="date">
                                         </div>
                                     </div>
 
@@ -162,7 +171,7 @@
 
                                         <div class="col-sm-6">
                                             <input type="tel" class="form-control" name="phone" id="phone"
-                                                formControlName="phone">
+                                                formControlName="phone" value="123456789">
                                         </div>
                                     </div>
 
@@ -212,6 +221,7 @@
                                         </div>
 
 
+
                                     </div>
 
 
@@ -219,15 +229,12 @@
 
                                 </div>
 
-                                <br>
-                                <br>
-
-
-
                             </div>
 
 
                         </div>
+
+                        
 
                         <br>
                         <br>
@@ -237,9 +244,9 @@
                 </form>
 
                 <div class="row">
-                    <div class="col-sm-12 d-grid">
-                        <button type="button" (click)="submit()" [disabled]="!empForm.valid" 
-                            class="btn btn-outline-success">Submit</button>
+                    <div class="col-sm-12 d-grid text-center">
+                        
+                        <app-data [empForm]="empForm"></app-data>
                     </div>
                 </div>
 

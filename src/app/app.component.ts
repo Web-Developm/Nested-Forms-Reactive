@@ -30,20 +30,20 @@ export class AppComponent {
   newEmployee(): FormGroup {
 
     return this.fb.group({
-      fname:[null,Validators.required],
-      lname:[null,Validators.required],
-      user:[null,Validators.required],
-      email: [null,Validators.required],
-      password: [null,Validators.required],
-      cpassword: [null,Validators.required],
-      date: [null,Validators.required],
-      gender: [null,Validators.required],
-      phone: [null,Validators.required],
+      fname:["",Validators.required],
+      lname:["",Validators.required],
+      user:["",Validators.required],
+      email: ["",Validators.required],
+      password: ["",Validators.required],
+      cpassword: ["",Validators.required],
+      date: ["",Validators.required],
+      gender: ["",Validators.required],
+      phone: ["",Validators.required],
       address: this.fb.group({
-        street: [null,Validators.required],
-        city: [null,Validators.required],
-        state: [null,Validators.required],
-        zip: [null,Validators.required]
+        street: ["",Validators.required],
+        city: ["",Validators.required],
+        state: ["",Validators.required],
+        zip: ["",Validators.required]
       }),
       
     });
@@ -68,8 +68,8 @@ export class AppComponent {
  
   submit()
   {
-    this.fs.myMethod(this.empForm);
-    this.refresh();
+    //this.fs.myMethod(this.empForm); 
+    //console.log(this.empForm.value);
   }
 
   ngOnInit()
@@ -78,6 +78,18 @@ export class AppComponent {
       employees: this.fb.array([this.newEmployee()]),
     })
 
+  }
+
+  items=['item1','item2','item3','item4'];
+
+  add(newItem:string)
+  {
+    this.items.push(newItem);
+  }
+
+  display()
+  {
+    console.log("hello");
   }
 
  
