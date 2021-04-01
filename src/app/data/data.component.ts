@@ -8,17 +8,19 @@ import { EventEmitter } from '@angular/core';
   selector: 'app-data',
   templateUrl: './data.component.html',
   styleUrls: ['./data.component.css'],
-  
+
 })
 export class DataComponent implements OnInit,OnChanges {
-  
+
   @Input() empForm!:FormGroup;
 
-  @Output() dataForm = new EventEmitter<any>();
+  @Output() dataForm: EventEmitter<any> = new EventEmitter<any>();
 
   data=new FormGroup({
     blood:new FormControl('')
   });
+
+
 
 
 
@@ -40,16 +42,21 @@ export class DataComponent implements OnInit,OnChanges {
       console.log(event.source.value, event.source.selected);
     }
   }
-  
+
 
   constructor(private fb:FormBuilder)
   {
-  }
-  
 
-  display()
+  }
+
+
+
+
+  display(event:any)
   {
-    console.log(this.empForm);
+    console.log(this.empForm);  // Parent to Child
+
+    this.dataForm.emit(this.data.value); // Child to Parent
   }
 
   ngOnInit()
@@ -60,9 +67,6 @@ export class DataComponent implements OnInit,OnChanges {
   ngOnChanges(changes: SimpleChanges)
   {
     console.log(changes.empForm);
-    this.dataForm.emit(this.data);
-
-     
   }
 }
 

@@ -14,7 +14,7 @@ import {FormService} from "./form.service";
 })
 export class AppComponent {
   title = 'reactive-task';
-  
+
   empForm!:FormGroup;
 
   today:number=Date.now();
@@ -22,8 +22,8 @@ export class AppComponent {
   formCheck:any='';
 
 
-  constructor(private fb:FormBuilder, private fs:FormService) {  
-    
+  constructor(private fb:FormBuilder, private fs:FormService) {
+
   }
 
   public onFormGroupChangeEvent(_event:any)
@@ -31,6 +31,31 @@ export class AppComponent {
     this.formCheck=_event;
     console.log(_event,this.formCheck['controls']);
   }
+
+  value:any;
+
+
+  public submit(_event:any)
+  {
+    this.value=_event;
+
+    console.log(this.value); // data Form
+
+    this.empForm.value.sample=this.value;
+
+    console.log(this.empForm.value); // EmpForm and DataForm
+
+
+
+    //this.formCheck=_event;
+    //console.log(_event,this.formCheck['controls']);
+  }
+
+
+
+
+
+
 
   get employees(){
     return <FormArray>this.empForm.get('employees');
@@ -54,13 +79,13 @@ export class AppComponent {
         state: ["",Validators.required],
         zip: ["",Validators.required]
       }),
-      
+
     });
   }
 
 
 
- 
+
   addEmployee() {
     this.employees.push(this.newEmployee());
   }
@@ -74,12 +99,8 @@ export class AppComponent {
     this.employees.reset();
   }
 
- 
-  submit()
-  {
-    //this.fs.myMethod(this.empForm); 
-    //console.log(this.empForm.value);
-  }
+
+
 
   ngOnInit()
   {
@@ -89,9 +110,9 @@ export class AppComponent {
 
   }
 
- 
 
- 
+
+
 
   display()
   {
@@ -106,6 +127,6 @@ export class AppComponent {
 
   }
 
- 
-  
+
+
 }
