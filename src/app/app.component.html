@@ -5,28 +5,26 @@
             <h5 class="text-center">{{today | date :"full"}}</h5>
         </div>
 
-        <br>
-        <br>
-
-        <div class="text-center">
+        <div class="text-center" style="padding:20px 0px">
             {{empForm.value | json}}
         </div>
 
-        <br>
-        <br>
-
         <div class="card-body">
+
             <div class="section">
+
                 <form [formGroup]="empForm">
+
                     <div formArrayName="employees">
+
                         <div *ngFor="let employee1 of employees.controls; let j=index">
-                            <div [formGroupName]="j" style="margin:5px;padding-top:5px" [ngClass]="{'text-dark':true}"
-                                [ngStyle]="{'font-size':'18px','color':'black','font-style':'bold'}">
+
+                            <div [formGroupName]="j" style="padding:5px 0px" [ngClass]="{'text-dark':true}"
+                                [ngStyle]="{'font-size':'16px','color':'black','font-style':'bold'}">
                                 Employee {{j}}
 
-                                <br>
-                                <br>
                                 <div class="row">
+
                                     <div class="col-6">
                                         <svg (click)="addEmployee()" aria-hidden="true" focusable="true"
                                             data-prefix="fas" data-icon="user-plus"
@@ -50,7 +48,6 @@
                                         </svg>
 
 
-
                                     </div>
                                 </div>
 
@@ -58,7 +55,8 @@
 
                                 <div class="row">
                                     <div class="col-sm-4">
-                                        <label>First Name</label>
+                                        First Name
+                                        
                                     </div>
 
                                     <div class="col-sm-6">
@@ -84,6 +82,8 @@
                                     </div>
                                 </div>
 
+
+
                                 <div class="row">
                                     <div class="col-sm-4">
                                         <label>User</label>
@@ -95,10 +95,7 @@
                                     </div>
                                 </div>
 
-                                <!--<app-data (empForm1)="add($event)"></app-data>
-                                <ul>
-                                    <li *ngFor="let item of items">{{item}}</li>
-                                </ul>-->
+                                
 
 
 
@@ -113,6 +110,9 @@
                                     </div>
                                 </div>
 
+
+
+
                                 <div class="row">
                                     <div class="col-sm-4">
                                         Password
@@ -124,103 +124,113 @@
                                     </div>
                                 </div>
 
+
+
                                 <div class="row">
                                     <div class="col-sm-4">
                                         Confirm Password
                                     </div>
-
+                                    
                                     <div class="col-sm-6">
                                         <input type="password" class="form-control" name="cpassword" id="cpassword"
-                                            formControlName="cpassword" autocomplete="on" value="1234">
+                                        formControlName="cpassword" autocomplete="on" value="1234">
                                     </div>
-
-                                    <!--<div [ngStyle]="{'color':'red'}" *ngIf="empForm.get('password') == empForm.get('cpassword')">Password Not Match</div>-->
-
-                                    </ div>
+                                </div>
 
 
+                                
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        Date of Birth
+                                    </div>
+                                    
+                                    <div class="col-sm-6">
+                                        <input type="datetime-local" class="form-control" name="date" id="date"
+                                        formControlName="date">
+                                    </div>
+                                </div>
+
+
+                                
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        Gender
+                                    </div>
+                                    
+                                    <div class="col-sm-6">
+                                        <select class="form-select" name="gender" formControlName="gender">
+                                            <option value="" selected>Select a option</option>
+                                            <option>Male</option>
+                                            <option>Female</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+
+                                
+                                <div class="row">
+                                    
+                                    <div class="col-sm-4">
+                                        Phone Number
+                                    </div>
+                                    
+                                    <div class="col-sm-6">
+                                        <input type="tel" class="form-control" name="phone" id="phone"
+                                        formControlName="phone" value="123456789">
+                                    </div>
+                                </div>
+
+
+                                
+                                <div formGroupName="address">
+                                    
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            Date of Birth
+                                            street
                                         </div>
-
+                                        
                                         <div class="col-sm-6">
-                                            <input type="date" class="form-control" name="date" id="date"
-                                                 formControlName="date">
+                                            <input type="text" class="form-control" name="street" id="street"
+                                            formControlName="street">
                                         </div>
                                     </div>
 
+
+                                    
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            Gender
+                                            City
                                         </div>
-
+                                        
                                         <div class="col-sm-6">
-                                            <select class="form-select" name="gender" formControlName="gender">
-                                                <option value="" selected>Select a option</option>
-                                                <option>Male</option>
-                                                <option>Female</option>
-                                            </select>
+                                            <input type="text" class="form-control" name="city" id="city"
+                                            formControlName="city">
                                         </div>
                                     </div>
 
+
+                                    
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            Phone Number
+                                            State
                                         </div>
-
+                                        
                                         <div class="col-sm-6">
-                                            <input type="tel" class="form-control" name="phone" id="phone"
-                                                formControlName="phone" value="123456789">
+                                            <input type="text" class="form-control" name="state" id="state"
+                                            formControlName="state">
                                         </div>
                                     </div>
-
-                                    <div formGroupName="address">
-                                        <div class="row">
-                                            <div class="col-sm-4">
-                                                street
-                                            </div>
-
-                                            <div class="col-sm-6">
-                                                <input type="text" class="form-control" name="street" id="street"
-                                                    formControlName="street">
-                                            </div>
+                                    
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            Zip
                                         </div>
-
-                                        <div class="row">
-                                            <div class="col-sm-4">
-                                                City
-                                            </div>
-
-                                            <div class="col-sm-6">
-                                                <input type="text" class="form-control" name="city" id="city"
-                                                    formControlName="city">
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-sm-4">
-                                                State
-                                            </div>
-
-                                            <div class="col-sm-6">
-                                                <input type="text" class="form-control" name="state" id="state"
-                                                    formControlName="state">
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-sm-4">
-                                                Zip
-                                            </div>
-
-                                            <div class="col-sm-6">
-                                                <input type="text" class="form-control" name="zip" id="zip"
+                                        
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" name="zip" id="zip"
                                                     formControlName="zip">
+                                                </div>
                                             </div>
-                                        </div>
-
-
                                     </div>
 
                                 </div>
@@ -236,7 +246,7 @@
 
                 <div class="row">
                     <div class="col-sm-12 d-grid text-center">
-                        <app-data [empForm]="empForm"></app-data>
+                        <app-data [empForm]="empForm" (dataForm)="onFormGroupChangeEvent($event)"></app-data>
                     </div>
                 </div>
 

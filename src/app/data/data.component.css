@@ -1,44 +1,25 @@
-    .jumbotron {
-    padding-bottom: 100px;
-  }
-  
-  .card-header {
-    padding-top: 30px;
-    padding-bottom: 30px;
+label{
+    font-size: 16px;
+    margin-right: 270px;
   }
   
   .section {
-    margin-left: 100px;
+    margin-left: 10px;
+  }
+
+  .row{
+    padding:5px 0px;
   }
   
   @media screen and (max-width: 1020px) {
     .section {
       margin-left: 0px;
     }
-  }
-  
-  .row {
-    padding: 10px;
-  }
-  
-  .remove {
-    margin-left: 50%;
-  }
-
-  label{
-    text-indent: -270px;
-    font-size: 18px;
-  }
-
-  @media screen and (max-width:1020px)
-  {
     label{
-      text-indent:-290px;
-      font-size: 18px;
+      margin-right:0px;
     }
   }
+ 
 
-  .form-select{
-    padding: 7px;
-  }
+  
   

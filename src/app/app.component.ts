@@ -1,4 +1,4 @@
-import { Component,Input } from '@angular/core';
+import { Component, SimpleChanges} from '@angular/core';
 import { FormControl, FormGroup,FormBuilder,FormArray,Validators } from '@angular/forms';
 import {FormService} from "./form.service";
 
@@ -19,8 +19,17 @@ export class AppComponent {
 
   today:number=Date.now();
 
+  formCheck:any='';
+
+
   constructor(private fb:FormBuilder, private fs:FormService) {  
     
+  }
+
+  public onFormGroupChangeEvent(_event:any)
+  {
+    this.formCheck=_event;
+    console.log(_event,this.formCheck['controls']);
   }
 
   get employees(){
@@ -80,16 +89,21 @@ export class AppComponent {
 
   }
 
-  items=['item1','item2','item3','item4'];
+ 
 
-  add(newItem:string)
-  {
-    this.items.push(newItem);
-  }
+ 
 
   display()
   {
-    console.log("hello");
+    console.log(this.empForm);
+  }
+
+
+
+  ngOnChanges(changes:SimpleChanges)
+  {
+    console.log(changes.formCheck);
+
   }
 
  

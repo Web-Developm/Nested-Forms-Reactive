@@ -1,6 +1,6 @@
-import { Component, OnInit,Input,SimpleChanges,OnChanges} from '@angular/core';
+import { Component, OnInit,Input,SimpleChanges,OnChanges,Output} from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators,FormArray } from '@angular/forms';
-import { Output, EventEmitter } from '@angular/core';
+import { EventEmitter } from '@angular/core';
 
 
 
@@ -14,28 +14,37 @@ export class DataComponent implements OnInit,OnChanges {
   
   @Input() empForm!:FormGroup;
 
-  @Output() dataForm = new EventEmitter<FormGroup>();
+  @Output() dataForm = new EventEmitter<any>();
 
-  data!:FormGroup;
+  data=new FormGroup({
+    blood:new FormControl('')
+  });
+
+
+
+  group=[
+    {value:'O+',viewValue:'O+'},
+    {value:"O-", viewValue:'O-'},
+    {value:'A+', viewValue:'A+'},
+    {value:'A-', viewValue:'A-'},
+    {value:'B+', viewValue:'B+'},
+    {value:'B-', viewValue:'B-'}
+  ];
+
+
+
+  change(event:any)
+  {
+    if(event.isUserInput)
+    {
+      console.log(event.source.value, event.source.selected);
+    }
+  }
   
 
   constructor(private fb:FormBuilder)
   {
-    /*this.dataForm=this.fb.group({
-      blood :new FormControl('')
-    }) */
   }
-
-  
-
-
-
-  add(value:FormGroup)
-  {
-    this.dataForm.emit(value);
-    
-  }
-
   
 
   display()
@@ -45,14 +54,15 @@ export class DataComponent implements OnInit,OnChanges {
 
   ngOnInit()
   {
-    //console.log(this.empForm.value);
-  }
 
+  }
 
   ngOnChanges(changes: SimpleChanges)
   {
-     console.log(changes.empForm);
-    
+    console.log(changes.empForm);
+    this.dataForm.emit(this.data);
+
+     
   }
 }
 
