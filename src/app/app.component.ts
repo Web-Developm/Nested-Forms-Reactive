@@ -39,11 +39,11 @@ export class AppComponent {
   {
     this.value=_event;
 
-    console.log(this.value); // data Form
+    console.log(this.value); // data Form,  child to parent
 
     this.empForm.value.sample=this.value;
 
-    console.log(this.empForm.value); // EmpForm and DataForm
+    console.log(this.empForm.value); // EmpForm and DataForm, child to parent
 
 
 

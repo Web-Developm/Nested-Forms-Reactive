@@ -64,7 +64,7 @@ export class DataComponent implements OnInit,OnChanges {
 
   }
 
-  ngOnChanges(changes: SimpleChanges)
+  ngOnChanges(changes: SimpleChanges):void
   {
     console.log(changes.empForm);
   }
