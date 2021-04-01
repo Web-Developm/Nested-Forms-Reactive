@@ -117,6 +117,7 @@ export class AppComponent {
   display()
   {
     console.log(this.empForm);
+    console.log(this.fs.myMethod(this.empForm));
   }
 
 
